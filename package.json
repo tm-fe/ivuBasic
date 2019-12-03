@@ -10,7 +10,12 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.149",
+    "@types/node-emoji": "^1.8.1",
     "core-js": "^3.4.3",
+    "lodash": "^4.17.15",
+    "node-emoji": "^1.10.0",
+    "tm-iview": "^4.0.0",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",
     "vue-property-decorator": "^8.3.0",

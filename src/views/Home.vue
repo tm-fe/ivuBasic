@@ -1,18 +1,28 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="home" style="width: 500px; margin: 0 auto;">
+    <Input v-model="text" />
+    <Emoji @select="selectEmoji"></Emoji>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import Emoji from "@/components/Emoji.vue";
 
 export default {
   name: "home",
   components: {
-    HelloWorld
+    Emoji
+  },
+  data() {
+    return {
+      text: ""
+    };
+  },
+  methods: {
+    selectEmoji(data) {
+      this.text += data;
+    }
   }
 };
 </script>
