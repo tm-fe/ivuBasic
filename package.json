@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "build-npm": "vue-cli-service build --target lib --name tm-child ./src/index.js",
     "lint": "vue-cli-service lint",
     "test:e2e": "vue-cli-service test:e2e",
     "test:unit": "vue-cli-service test:unit"
@@ -13,6 +14,11 @@
     "type": "git",
     "url": "https://github.com/luckyMY/tm-child.git"
   },
+  "files": [
+    "dist",
+    "src",
+    "types"
+],
   "dependencies": {
     "@types/lodash": "^4.14.149",
     "@types/node-emoji": "^1.8.1",
