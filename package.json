@@ -9,6 +9,10 @@
     "test:e2e": "vue-cli-service test:e2e",
     "test:unit": "vue-cli-service test:unit"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luckyMY/tm-child.git"
+},
   "dependencies": {
     "@types/lodash": "^4.14.149",
     "@types/node-emoji": "^1.8.1",
