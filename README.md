@@ -1,4 +1,4 @@
-# tm-child
+# ivuBasic
 
 ## Project setup
 ```
