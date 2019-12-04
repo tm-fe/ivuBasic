@@ -3,27 +3,27 @@
         <Poptip placement="top-start"
                 :transfer="true"
                 v-model="pickerVisible">
-            <div class="emoji-btn">{{ face }}</div>
+            <div class="tm-emoji-btn">{{ face }}</div>
             <div slot="content">
-                <div class="picker">
+                <div class="tm-picker">
                     <template v-for="(item, index) in emojiData">
-                        <div class="picker-body"
+                        <div class="tm-picker-body"
                              :key="index"
                              v-show="selectPanel === index">
                             <div v-for="d in item"
                                  :key="d"
-                                 class="item-box"
+                                 class="tm-item-box"
                                  @click="onSelect(d)">
                                 {{ getUnicode(d) }}
                             </div>
                         </div>
                     </template>
 
-                    <div class="toggle-box">
+                    <div class="tm-toggle-box">
                         <div v-for="(item, index) in emojiData"
                              :key="index"
                              @click="selectPanel = index"
-                             :class="{ dot: true, active: selectPanel === index }"></div>
+                             :class="{ 'tm-dot': true, 'tm-active': selectPanel === index }"></div>
                     </div>
                 </div>
             </div>
@@ -76,23 +76,23 @@ export default class Emoji extends Vue {
 </script>
 
 <style scoped lang="less">
-.emoji-btn {
+.tm-emoji-btn {
     font-size: 20px;
     cursor: pointer;
     width: 50px;
     text-align: center;
 }
-.picker {
+.tm-picker {
     background-color: #fff;
     border-radius: 8px;
-    .picker-body {
+    .tm-picker-body {
         display: flex;
         justify-content: flex-start;
         flex-wrap: wrap;
         overflow: auto;
         width: 400px;
         height: 450px;
-        .item-box {
+        .tm-item-box {
             width: 39px;
             height: 40px;
             text-align: center;
@@ -106,19 +106,19 @@ export default class Emoji extends Vue {
         }
     }
 
-    .toggle-box {
+    .tm-toggle-box {
         height: 20px;
         display: flex;
         justify-content: center;
         margin-bottom: 10px;
-        .dot {
+        .tm-dot {
             border-radius: 100%;
             background-color: #ccc;
             width: 8px;
             height: 8px;
             cursor: pointer;
             margin: 0 5px;
-            &.active {
+            &.tm-active {
                 background-color: #f06f54;
             }
         }

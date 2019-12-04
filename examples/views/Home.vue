@@ -7,14 +7,12 @@
 </template>
 
 <script>
-// @ is an alias to /src
-import Emoji from '@/Emoji.vue';
-
+import { Emoji } from '@/index';
 export default {
-    name: 'home',
     components: {
         Emoji
     },
+    name: 'home',
     data() {
         return {
             text: ''

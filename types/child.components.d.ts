@@ -2,7 +2,7 @@ import Vue from 'vue';
 
 export { Group } from './group';
 export { Emoji } from './emoji';
-
+ 
 interface ChildGlobalOptions {
 
 }

@@ -9,19 +9,19 @@
                   :index="index"
                   :list="value"
                   :emitInput="emitInput"></slot>
-            <div :class="$style.buttons">
+            <div :class="$style.tm_buttons">
                 <Button :size="groupSize"
                         type="primary"
                         @click="handleAdd(item, index, value)"
                         icon="md-add"
                         :disabled="value.length >= maxCount"
-                        :class="$style.btn_add"></Button>
+                        :class="$style.tm_btn_add"></Button>
                 <Button :size="groupSize"
                         type="error"
                         @click="handleRemove(item, index, value)"
                         v-if="value.length > 1"
                         icon="md-remove"
-                        :class="$style.btn_remove"></Button>
+                        :class="$style.tm_btn_remove"></Button>
             </div>
             <slot name="rightComponent"
                   :item="item"
@@ -64,12 +64,12 @@ export default class Group extends Vue {
     get groupClasses() {
         const self: any = this;
         if (Array.isArray(this.groupClass)) {
-            return this.groupClass.concat([self.$style.item]);
+            return this.groupClass.concat([self.$style.tm_item]);
         }
         if (typeof this.groupClass === 'string') {
-            return [self.$style.item, this.groupClass];
+            return [self.$style.tm_item, this.groupClass];
         }
-        return self.$style.item;
+        return self.$style.tm_item;
     }
 
     public handleAdd(item: any, index: number, list: any[]) {
@@ -100,22 +100,22 @@ export default class Group extends Vue {
 </script>
 
 <style module lang="less">
-.item {
+.tm_item {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
 }
 
-.btn_add {
+.tm_btn_add {
     margin-left: 5px;
     font-weight: bolder;
 }
 
-.btn_remove {
-    .btn_add();
+.tm_btn_remove {
+    .tm_btn_add();
 }
 
-.buttons {
+.tm_buttons {
     flex-basis: auto;
     flex-shrink: 0;
     width: 100px;
