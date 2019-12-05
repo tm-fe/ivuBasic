@@ -1,5 +1,6 @@
-import Emoji from './Emoji.vue';
-import Group from './Group.vue';
+import Emoji from './components//Emoji.vue';
+import Group from './components/Group.vue';
+import './style/index.less';
 
 const components: any = {
     Emoji,

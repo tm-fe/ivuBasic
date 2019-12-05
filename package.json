@@ -3,12 +3,12 @@
   "title":"IvuBasic",
   "version": "0.1.0",
   "private": false,
-  "main": "dist/index.umd.js",
+  "main": "dist/ivubasic.umd.js",
   "typings": "types/index.d.ts",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build-npm": "vue-cli-service build --target lib --name index ./src/index.ts",
+    "build-npm": "vue-cli-service build --target lib --name ivubasic ./src/index.ts",
     "lint": "vue-cli-service lint",
     "test:e2e": "vue-cli-service test:e2e",
     "test:unit": "vue-cli-service test:unit"
