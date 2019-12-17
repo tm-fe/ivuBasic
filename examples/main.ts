@@ -7,10 +7,12 @@ import 'tm-iview/dist/styles/iview.css';
 
 Vue.config.productionTip = false;
 
-Vue.use(iView);
+Vue.use(iView, {
+    initPopper: false
+});
 
 
 new Vue({
     router,
-    render: h => h(App)
+    render: (h) => h(App)
 }).$mount('#app');

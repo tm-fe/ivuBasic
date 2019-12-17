@@ -8,6 +8,7 @@
 
 <script>
 import { Emoji } from '@/index';
+
 export default {
     components: {
         Emoji

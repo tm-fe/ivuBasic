@@ -14,25 +14,30 @@ module.exports = {
             filename: 'index.html',
             // 当使用 title 选项时，
             // template 中的 title 标签需要是 <title><%= htmlWebpackPlugin.options.title %></title>
-            title: 'Index Page'
+            title: 'Index Page',
+            // 在这个页面中包含的块，默认情况下会包含
+            // 提取出来的通用 chunk 和 vendor chunk。
+            chunks: ['chunk-vendors', 'chunk-common', 'index']
         }
     },
     configureWebpack: (config) => {
-        config.externals = {
-            vue: {
-                root: 'Vue',
-                commonjs: 'vue',
-                commonjs2: 'vue',
-                amd: 'vue'
-            }
-        };
+        // config.outputDir = {
+        //     libraryExport: 'default'
+        // };
+        // config.externals = {
+        //     vue: {
+        //         root: 'Vue',
+        //         commonjs: 'vue',
+        //         commonjs2: 'vue',
+        //         amd: 'vue'
+        //     }
+        // };
         config.plugins = config.plugins.concat([
             new UglifyJsPlugin({
                 parallel: true,
                 sourceMap: true
             }),
             new CompressionPlugin({
-                asset: '[path].gz[query]',
                 algorithm: 'gzip',
                 test: /\.(js|css)$/,
                 threshold: 10240,
@@ -41,15 +46,14 @@ module.exports = {
         ]);
     },
     chainWebpack: (config) => {
-        config.plugins.delete('html');
-        config.plugins.delete('preload');
-        config.plugins.delete('prefetch');
         config
             .mode('development')
             .entry('app')
             .add('./examples/main.ts')
             .end();
-        config.resolve
-            .alias.set('examples',  path.join(path.resolve('examples')));
+        config.resolve.alias.set(
+            'examples',
+            path.join(path.resolve('examples'))
+        );
     }
 };

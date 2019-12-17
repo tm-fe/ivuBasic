@@ -1,7 +1,7 @@
 <template>
     <div>
         <Poptip placement="top-start"
-                :transfer="true"
+                transfer
                 v-model="pickerVisible">
             <div class="tm-emoji-btn">{{ face }}</div>
             <div slot="content">
@@ -110,6 +110,7 @@ export default class Emoji extends Vue {
         height: 20px;
         display: flex;
         justify-content: center;
+        align-items: flex-start;
         margin-bottom: 10px;
         .tm-dot {
             border-radius: 100%;
