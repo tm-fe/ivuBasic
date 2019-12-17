@@ -21,21 +21,10 @@ module.exports = {
         }
     },
     configureWebpack: (config) => {
-        // config.outputDir = {
-        //     libraryExport: 'default'
-        // };
-        // config.externals = {
-        //     vue: {
-        //         root: 'Vue',
-        //         commonjs: 'vue',
-        //         commonjs2: 'vue',
-        //         amd: 'vue'
-        //     }
-        // };
         config.plugins = config.plugins.concat([
             new UglifyJsPlugin({
                 parallel: true,
-                sourceMap: true
+                sourceMap: false
             }),
             new CompressionPlugin({
                 algorithm: 'gzip',
