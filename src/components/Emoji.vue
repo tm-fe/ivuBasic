@@ -34,15 +34,10 @@
 <script lang="ts">
 import { Component, Vue, Emit } from 'vue-property-decorator';
 import emoji from 'node-emoji';
-import { Poptip } from 'tm-iview';
 
 const emojiByName = require('node-emoji/lib/emoji.json');
 
-@Component({
-    components: {
-        Poptip
-    }
-})
+@Component
 export default class Emoji extends Vue {
     private face = emoji.get('smile');
 

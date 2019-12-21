@@ -35,13 +35,8 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import { isObject } from 'lodash';
-import { Button } from 'tm-iview';
 
-@Component({
-    components: {
-        Button
-    }
-})
+@Component
 export default class Group extends Vue {
     @Prop({ required: true, type: Array })
     private value!: any[];
