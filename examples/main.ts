@@ -1,7 +1,7 @@
 import iView from 'tm-iview';
 import Vue from 'vue';
-import App from './App.vue';
-import router from './router';
+import App from 'examples/App.vue';
+import router from 'examples/router';
 import 'tm-iview/dist/styles/iview.css';
 
 

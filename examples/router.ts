@@ -4,12 +4,11 @@ import Router from 'vue-router';
 Vue.use(Router);
 
 const router = new Router({
-    mode: 'history',
     routes: [
         {
-            path: '/home',
+            path: '/',
             name: 'home',
-            component: () => import('./views/Home.vue')
+            component: () => import('examples/views/Home.vue')
         }
     ]
 });
