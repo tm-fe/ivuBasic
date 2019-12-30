@@ -7,33 +7,22 @@ yarn install
 
 ### Compiles and hot-reloads for development
 ```
-yarn run serve
+yarn dev
 ```
 
 ### Compiles and minifies for production
 ```
-yarn run build
+yarn dist
 ```
 
-### Run your tests
+### 项目依赖
+#### 必要依赖 tm-iview、lodash
 ```
-yarn run test
+yarn add tm-iview
+yarn add lodash
 ```
-
-### Lints and fixes files
+#### 按需依赖 node-emoji
 ```
-yarn run lint
-```
-
-### Run your end-to-end tests
-```
-yarn run test:e2e
+yarn add node-emoji
 ```
 
-### Run your unit tests
-```
-yarn run test:unit
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
