@@ -1,7 +1,7 @@
 {
   "name": "tm-ivubasic",
   "title": "IvuBasic",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "private": false,
   "main": "dist/ivubasic.umd.js",
   "typings": "types/index.d.ts",

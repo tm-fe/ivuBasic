@@ -7,9 +7,8 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 process.env.NODE_ENV = 'production';
 
 module.exports = merge(webpackBaseConfig, {
-    devtool: 'source-map',
     entry: {
-        main: './src/index.ts',
+        main: './src/index.ts'
     },
     output: {
         path: path.resolve(__dirname, '../dist'),
@@ -17,30 +16,39 @@ module.exports = merge(webpackBaseConfig, {
         filename: 'ivubasic.umd.js',
         library: 'ivubasic',
         libraryTarget: 'umd',
-        umdNamedDefine: true,
+        umdNamedDefine: true
     },
     externals: {
         vue: {
             root: 'Vue',
             commonjs: 'vue',
             commonjs2: 'vue',
-            amd: 'vue',
+            amd: 'vue'
+        },
+        lodash: {
+            root: '_',
+            commonjs: 'lodash',
+            commonjs2: 'lodash',
+            amd: 'lodash'
+        },
+        'node-emoji': {
+            root: 'node-emoji',
+            commonjs: 'node-emoji',
+            commonjs2: 'node-emoji',
+            amd: 'node-emoji'
         }
     },
     plugins: [
         new webpack.DefinePlugin({
             'process.env': {
-                NODE_ENV: '"production"',
-            },
+                NODE_ENV: '"production"'
+            }
         }),
-    ],
-    optimization: {
-        minimizer: [
-          new UglifyJsPlugin({
+        new UglifyJsPlugin({
             parallel: true,
-            sourceMap: true,
-          })
-        ],
-    },
-    mode: 'production',
+            sourceMap: false
+        })
+    ],
+    optimization: {},
+    mode: 'production'
 });
