@@ -9,19 +9,19 @@
                   :index="index"
                   :list="value"
                   :emitInput="emitInput"></slot>
-            <div :class="$style.tm_buttons">
+            <div class="tm_buttons">
                 <Button :size="groupSize"
                         type="primary"
                         @click="handleAdd(item, index, value)"
                         icon="md-add"
                         :disabled="value.length >= maxCount"
-                        :class="$style.tm_btn_add"></Button>
+                        class="tm_btn_add"></Button>
                 <Button :size="groupSize"
                         type="error"
                         @click="handleRemove(item, index, value)"
                         v-if="value.length > 1"
                         icon="md-remove"
-                        :class="$style.tm_btn_remove"></Button>
+                        class="tm_btn_remove"></Button>
             </div>
             <slot name="rightComponent"
                   :item="item"
@@ -59,12 +59,12 @@ export default class Group extends Vue {
     get groupClasses() {
         const self: any = this;
         if (Array.isArray(this.groupClass)) {
-            return this.groupClass.concat([self.$style.tm_item]);
+            return this.groupClass.concat(['tm_item']);
         }
         if (typeof this.groupClass === 'string') {
-            return [self.$style.tm_item, this.groupClass];
+            return ['tm_item', this.groupClass];
         }
-        return self.$style.tm_item;
+        return 'tm_item';
     }
 
     public handleAdd(item: any, index: number, list: any[]) {
@@ -94,7 +94,7 @@ export default class Group extends Vue {
 }
 </script>
 
-<style module lang="less">
+<style lang="less" scoped>
 .tm_item {
     display: flex;
     align-items: center;

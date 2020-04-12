@@ -27,16 +27,15 @@ module.exports = {
                             {
                                 loader: 'css-loader',
                                 options: {
-                                    sourceMap,
+                                    sourceMap
                                 },
                             },
                         ],
                         less: [
-                            'vue-style-loader',
                             {
                                 loader: 'css-loader',
                                 options: {
-                                    sourceMap,
+                                    sourceMap
                                 },
                             },
                             {
@@ -67,13 +66,13 @@ module.exports = {
                     {
                         loader: 'style-loader',
                         options: {
-                            sourceMap,
+                            sourceMap
                         },
                     },
                     {
                         loader: 'css-loader',
                         options: {
-                            sourceMap,
+                            sourceMap
                         },
                     },
                 ],
@@ -84,19 +83,19 @@ module.exports = {
                     {
                         loader: 'style-loader',
                         options: {
-                            sourceMap,
+                            sourceMap
                         },
                     },
                     {
                         loader: 'css-loader',
                         options: {
-                            sourceMap,
+                            sourceMap
                         },
                     },
                     {
                         loader: 'less-loader',
                         options: {
-                            sourceMap,
+                            sourceMap
                         },
                     },
                 ],

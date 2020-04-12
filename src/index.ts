@@ -1,10 +1,12 @@
 import Emoji from './components//Emoji.vue';
 import Group from './components/Group.vue';
+import Loading from './components/loading/Loading.vue';
 import './style/index.less';
 
 const components: any = {
     Emoji,
-    Group
+    Group,
+    Loading
 };
 
 const install: any = (Vue: any) => {
@@ -29,5 +31,6 @@ export default API;
 export {
     install,
     Emoji,
-    Group
+    Group,
+    Loading
 };
