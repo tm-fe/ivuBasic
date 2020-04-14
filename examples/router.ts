@@ -14,6 +14,11 @@ const router = new Router({
             path: '/loading',
             name: 'loading',
             component: () => import('examples/views/Loading.vue')
+        },
+        {
+            path: '/copy',
+            name: 'copy',
+            component: () => import('examples/views/Copy.vue')
         }
     ]
 });

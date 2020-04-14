@@ -1,16 +1,6 @@
 <template>
     <div>
-        <div style="width:100px; height: 100px;">
-            <Loading></Loading>
-        </div>
-
-        <div style="width:100px; height: 100px;">
-            <Loading loadingText="加载中"></Loading>
-        </div>
-
-        <div v-loading="loading"
-             tm-loading-text="指令加载中, 3秒消失"
-             style="width:100px; height: 100px;"></div>
+        <p v-copy="'点击文字自动复制，快试一下吧'" copy-success="复制成功">点击文字自动复制，快试一下吧</p>
     </div>
 </template>
 
@@ -25,7 +15,7 @@ import { Loading } from '@/index';
 })
 export default class LoadingExamPle extends Vue {
     private loading = true;
-    
+
     mounted() {
         setTimeout(() => {
             this.loading = false;
