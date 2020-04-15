@@ -2,7 +2,9 @@ import Vue from 'vue';
 
 export { Group } from './group';
 export { Emoji } from './emoji';
- 
+export { Loading, vLoading } from './loading';
+export { vClipboard } from './clipboard';
+
 interface ChildGlobalOptions {
 
 }

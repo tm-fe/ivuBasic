@@ -2,7 +2,7 @@ import Emoji from './components//Emoji.vue';
 import Group from './components/Group.vue';
 import Loading from './components/loading/Loading.vue';
 import vLoading from './components/loading/directive';
-import vQuickCopy from './directives/quickCopy';
+import vClipboard from './directives/clipboard';
 import './style/index.less';
 
 const components: any = {
@@ -36,5 +36,5 @@ export {
     Group,
     Loading,
     vLoading,
-    vQuickCopy
+    vClipboard
 };
