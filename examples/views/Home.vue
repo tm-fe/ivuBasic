@@ -2,12 +2,14 @@
     <div class="home"
          style="width: 500px; margin: 0 auto;">
         <Input v-model="text" />
-        <Emoji @select="selectEmoji"></Emoji>
+        <Emoji @select="selectEmoji" :emojiJson="emojiByName"></Emoji>
     </div>
 </template>
 
 <script>
 import { Emoji } from '@/index';
+
+const emojiByName = require('node-emoji/lib/emoji.json');
 export default {
     components: {
         Emoji
@@ -15,7 +17,8 @@ export default {
     name: 'home',
     data() {
         return {
-            text: ''
+            text: '',
+            emojiByName: emojiByName
         };
     },
     methods: {

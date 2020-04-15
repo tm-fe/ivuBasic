@@ -36,6 +36,12 @@ module.exports = merge(webpackBaseConfig, {
             commonjs: 'node-emoji',
             commonjs2: 'node-emoji',
             amd: 'node-emoji'
+        },
+        'tm-iview': {
+            root: 'tm-iview',
+            commonjs: 'tm-iview',
+            commonjs2: 'tm-iview',
+            amd: 'tm-iview'
         }
     },
     plugins: [

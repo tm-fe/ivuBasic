@@ -32,13 +32,13 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Emit } from 'vue-property-decorator';
+import { Component, Vue, Emit, Prop } from 'vue-property-decorator';
 import emoji from 'node-emoji';
-
-const emojiByName = require('node-emoji/lib/emoji.json');
 
 @Component
 export default class Emoji extends Vue {
+    @Prop({type: Object, default: () => {}, required: true}) emojiJson!: any; 
+
     private face = emoji.get('smile');
 
     private selectPanel = 11;
@@ -46,11 +46,11 @@ export default class Emoji extends Vue {
     private pickerVisible = false;
 
     private get emojiData() {
-        const panelLen = Math.ceil(Object.keys(emojiByName).length / 100);
+        const panelLen = Math.ceil(Object.keys(this.emojiJson).length / 100);
         let result: any = [];
         for (let i = 0; i < panelLen; i++) {
             result = result.concat([
-                Object.keys(emojiByName).filter(
+                Object.keys(this.emojiJson).filter(
                     (e, ii) => ii >= i * 100 && ii < (i + 1) * 100
                 )
             ]);
