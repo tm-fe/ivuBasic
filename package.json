@@ -1,7 +1,7 @@
 {
   "name": "tm-ivubasic",
   "title": "IvuBasic",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": false,
   "main": "dist/ivubasic.umd.js",
   "typings": "types/index.d.ts",
@@ -60,9 +60,12 @@
     "html-webpack-plugin": "^3.2.0",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
+    "lodash": "^4.17.15",
+    "node-emoji": "^1.10.0",
     "pre-commit": "^1.2.2",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
+    "tm-iview": "^4.0.0",
     "ts-loader": "^6.0.2",
     "typescript": "^3.5.1",
     "uglifyjs-webpack-plugin": "^2.1.2",
@@ -75,10 +78,7 @@
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.2",
     "webpack-dev-server": "^3.3.1",
-    "webpack-merge": "^4.2.1",
-    "lodash": "^4.17.15",
-    "node-emoji": "^1.10.0",
-    "tm-iview": "^4.0.0"
+    "webpack-merge": "^4.2.1"
   },
   "eslintConfig": {
     "root": true,
