@@ -21,7 +21,6 @@ const toggleLoading = (el: any, binding: any, ) => {
         });
         el.instance = mask;
         el.mask = mask.$el;
-        el.domInserted = true;
         el.originalPosition = window.getComputedStyle(el, '')['position'];
         el.style.position = 'relative';
         el.appendChild(mask.$el);
@@ -30,18 +29,20 @@ const toggleLoading = (el: any, binding: any, ) => {
 
 const removeLoading = (el: any) => {
     if (el.domInserted) {
-        el.mask &&
-            el.mask.parentNode &&
-            el.mask.parentNode.removeChild(el.mask);
+        el.mask && el.removeChild(el.mask);
         el.style.position = el.originalPosition;
+        el.mask = null;
+        el.domInserted = false;
     }
     el.instance && el.instance.$destroy();
+
 }
 
 
 export default {
     update: (el: any, binding: any) => {
         if (binding.value && !el.domInserted) {
+            el.domInserted = true;
             toggleLoading(el, binding);
         }
         if (!binding.value) {
@@ -50,6 +51,7 @@ export default {
     },
     bind: (el: any, binding: any) => {
         if (binding.value) {
+            el.domInserted = true;
             toggleLoading(el, binding)
         }
     },
