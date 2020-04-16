@@ -4,27 +4,25 @@ import Loading from './Loading.vue';
 const Mask = Vue.extend(Loading);
 
 const toggleLoading = (el: any, binding: any, ) => {
-    Vue.nextTick(() => {
-        const text = el.getAttribute('tm-loading-text');
-        const spinner = el.getAttribute('tm-loading-spinner');
-        const spinnerSize = el.getAttribute('tm-spinner-size');
-        const customClass = el.getAttribute('tm-loading-class');
-        const mask = new Mask({
-            el: document.createElement('div'),
-            propsData: {
-                size: binding.arg,
-                spinner,
-                spinnerSize,
-                customClass,
-                loadingText: text
-            }
-        });
-        el.instance = mask;
-        el.mask = mask.$el;
-        el.originalPosition = window.getComputedStyle(el, '')['position'];
-        el.style.position = 'relative';
-        el.appendChild(mask.$el);
-    })
+    const text = el.getAttribute('tm-loading-text');
+    const spinner = el.getAttribute('tm-loading-spinner');
+    const spinnerSize = el.getAttribute('tm-spinner-size');
+    const customClass = el.getAttribute('tm-loading-class');
+    const mask = new Mask({
+        el: document.createElement('div'),
+        propsData: {
+            size: binding.arg,
+            spinner,
+            spinnerSize,
+            customClass,
+            loadingText: text
+        }
+    });
+    el.instance = mask;
+    el.mask = mask.$el;
+    el.originalPosition = window.getComputedStyle(el, '')['position'];
+    el.style.position = 'relative';
+    el.appendChild(mask.$el);
 }
 
 const removeLoading = (el: any) => {
