@@ -41,7 +41,7 @@ const removeLoading = (el: any) => {
 
 export default {
     update: (el: any, binding: any) => {
-        if (binding.value && el.domInserted) {
+        if (binding.value && !el.domInserted) {
             toggleLoading(el, binding);
         }
         if (!binding.value) {

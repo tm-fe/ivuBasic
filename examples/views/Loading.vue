@@ -25,11 +25,14 @@ import { Loading } from '@/index';
 })
 export default class LoadingExamPle extends Vue {
     private loading = true;
-    
+
     mounted() {
         setTimeout(() => {
+            this.loading = true;
+        }, 2000)
+        setTimeout(() => {
             this.loading = false;
-        }, 3000)
+        }, 4000)
     }
 }
 </script>
