@@ -52,13 +52,11 @@ const onClick = (el: any) => {
 };
 
 const listenerClick = (el: any, binding: any) => {
-    if (!el.isListener) {
-        const copyText = binding.value || el.textContent;
-        if (copyText) {
-            el.setAttribute('copy-data', copyText);
-            el.addEventListener('click', onClick, true);
-            el.isListener = true;
-        }
+    const copyText = binding.value || el.textContent;
+    el.setAttribute('copy-data', copyText);
+    if (!el.isListener && copyText) {
+        el.addEventListener('click', onClick, true);
+        el.isListener = true;
     }
 }
 
