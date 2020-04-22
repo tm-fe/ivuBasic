@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="width: 500px; margin: 0 auto;">
         <div style="width:100px; height: 100px;">
             <Loading></Loading>
         </div>

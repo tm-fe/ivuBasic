@@ -1,23 +1,116 @@
 <template>
     <div id="app">
-        <router-view />
+        <div class="container">
+            <header>
+                <h1>Ivu Basic</h1>
+            </header>
+            <div class="main">
+                <nav class="nav">
+                    <ul>
+                        <li v-for="item in routesList"
+                            :key="item.name">
+                            <router-link :to="item.path"
+                                         :class="$route.name === item.name?'active':''">{{
+                            (item.meta && item.meta.title) || item.name
+                        }}</router-link>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="cont">
+                    <router-view></router-view>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
-
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component
-export default class App extends Vue { }
+export default class App extends Vue {
+    private routesList: any = [];
+
+    mounted() {
+        this.routesList = (this.$router as any).options.routes;
+    }
+}
 </script>
 
 <style lang="less">
-#app {
-    font-family: "Avenir", Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
+body,
+h1,
+ul,
+li {
+    padding: 0;
+    margin: 0;
+}
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-flow: column;
+    header {
+        padding: 10px;
+        flex-shrink: 0;
+        color: #fff;
+        text-align: center;
+        border-bottom: 2px solid #0e8cf3;
+        background: #1696ff;
+        h1 {
+            font-weight: 600;
+            font-size: 28px;
+            line-height: 1;
+        }
+    }
+}
+.main {
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+    position: relative;
+}
+.btn-box {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 15px;
+    button {
+        padding: 5px 10px;
+    }
+}
+.nav {
+    padding: 15px 5px;
+    width: 170px;
+    border-right: 1px solid #d8d8d8;
+    flex-shrink: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: #fcfcfc;
+    ul li {
+        list-style: none;
+    }
+    a {
+        color: #444;
+        text-decoration: none;
+        display: block;
+        line-height: 24px;
+        margin-bottom: 5px;
+        padding: 0 10px;
+        border-radius: 5px;
+        font-size: 12px;
+        &:hover {
+            color: #0e8cf3;
+        }
+        &.active {
+            background: #0e8cf3;
+            color: #fff;
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+}
+.cont {
+    padding: 20px;
+    width: 0;
+    flex: 1;
 }
 </style>
