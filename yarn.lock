@@ -6557,10 +6557,10 @@ tinycolor2@^1.4.1:
   resolved "https://registry.yarnpkg.com/tinycolor2/-/tinycolor2-1.4.1.tgz#f4fad333447bc0b07d4dc8e9209d8f39a8ac77e8"
   integrity sha1-9PrTM0R7wLB9TcjpIJ2POaisd+g=
 
-tm-iview@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/tm-iview/-/tm-iview-4.0.0.tgz#a10178eb13bd7323c70a3d22ea9f9412c0161baa"
-  integrity sha512-RJnt6+AMYefpOsOLsa26qDxMl4BAmzVw9MvI2xGnsqGASmBh/fwqwI0RQRXJD4H+61/e/NOrnL5vfuMCS8PCyA==
+tm-iview@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/tm-iview/-/tm-iview-4.1.0.tgz#b2805b203f29948c0b9d3b0bb2bfa31103f77b04"
+  integrity sha512-osJ4u2rX9QwQ2jClxGotHyscl5LBneZVQ4AyB+8hZrooyqw4ZYTVIm4nVwriWg19JhLBULeav+SlCH9klLL2pQ==
   dependencies:
     async-validator "^1.10.0"
     deepmerge "^2.2.1"
