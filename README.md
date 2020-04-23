@@ -1,5 +1,10 @@
 # ivuBasic
 
+## Demo
+To view a demo online: [https://tm-fe.github.io/ivuBasic/examples/dist/](https://tm-fe.github.io/ivuBasic/examples/dist/)
+
+To view demo examples locally clone the repo and run `yarn install && yarn dev` or view [local example](./examples) 
+
 ## Project setup
 ```
 yarn install
