@@ -95,14 +95,15 @@ module.exports = {
                     {
                         loader: 'less-loader',
                         options: {
-                            sourceMap
+                            sourceMap,
+                            javascriptEnabled: true
                         },
                     },
                 ],
             },
             {
                 test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
-                loader: 'url-loader?limit=8192',
+                loader: 'url-loader',
             },
             {
                 test: /\.(html|tpl)$/,

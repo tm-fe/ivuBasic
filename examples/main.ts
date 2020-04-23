@@ -3,8 +3,8 @@ import Vue from 'vue';
 import App from 'examples/App.vue';
 import router from 'examples/router';
 import i18n from './locales';
-import 'tm-iview/dist/styles/iview.css';
 import { vLoading, vClipboard } from '@/index';
+import 'examples/styles/index.less';
 
 
 Vue.config.productionTip = false;

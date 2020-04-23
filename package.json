@@ -1,7 +1,7 @@
 {
   "name": "tm-ivubasic",
   "title": "IvuBasic",
-  "version": "0.1.8",
+  "version": "0.2.0",
   "private": false,
   "main": "dist/ivubasic.umd.js",
   "es": "src/index.ts",
@@ -30,7 +30,6 @@
   "homepage": "https://github.com/tm-fe/ivuBasic#readme",
   "dependencies": {
     "vue-class-component": "^7.0.2",
-    "vue-i18n": "^8.17.3",
     "vue-property-decorator": "^8.3.0"
   },
   "devDependencies": {
@@ -67,12 +66,13 @@
     "pre-commit": "^1.2.2",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
-    "tm-iview": "^4.0.0",
+    "tm-iview": "^4.1.0",
     "ts-loader": "^6.0.2",
     "typescript": "^3.5.1",
     "uglifyjs-webpack-plugin": "^2.1.2",
     "url-loader": "^1.1.2",
     "vue": "^2.6.10",
+    "vue-i18n": "^8.17.3",
     "vue-loader": "^15.7.0",
     "vue-router": "^3.0.6",
     "vue-style-loader": "^4.1.2",
