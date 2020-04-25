@@ -1,19 +1,30 @@
 <template>
     <div :class="customClass">
-        <slot name="input"></slot>
-        <div v-if="currentStrength.id">
+        <div v-if="isCapsLock"
+             class="tm-capslock">
+            <Tooltip :disabled="!openCapsLock"
+                     style="width: 100%;"
+                     :always="openCapsLock"
+                     :content="capsLockLabel">
+                <slot name="input"> </slot>
+            </Tooltip>
+        </div>
+        <slot name="input"
+              v-else></slot>
+        <div v-if="currentStrength">
             <div v-if="type === 'text'"
                  class="tm-align-l tm-mt tm-flex-start">
-                <span class="tm-mr8">{{$t('tm.pwdStrength')}}</span>
-                <Tag :color="currentStrength.id === 1 ? 'default':currentStrength.id === 2?'primary':'success'">{{$t(currentStrength.name)}} </Tag>
+                <span class="tm-mr8">{{strengtLabel}}</span>
+                <Tag :color="currentStrength=== 1 ? 'default':currentStrength === 2?'primary':'success'">{{strengtIntro[currentStrength - 1]}} </Tag>
             </div>
-            <div v-else class="tm-flex-center">
+            <div v-else
+                 class="tm-flex-center">
                 <ButtonGroup size="small"
                              class="tm-progress"
                              shape="circle">
-                    <Button :type="currentStrength.id < item.id ? 'default':item.id === 1 ? 'info': item.id === 2?'primary':'success'"
+                    <Button :type="currentStrength < item ? 'default':item === 1 ? 'info': item === 2?'primary':'success'"
                             v-for="item in strengthArr"
-                            :key="item.id">{{$t(item.name)}}</Button>
+                            :key="item">{{strengtIntro[item - 1]}}</Button>
                 </ButtonGroup>
             </div>
         </div>
@@ -25,11 +36,11 @@ import { Component, Vue, Emit, Prop, Model, Watch } from 'vue-property-decorator
 
 @Component
 export default class Password extends Vue {
-    @Model('change') value!: string;
+    @Model('change') value!: string; // slot input v-model
 
-    @Prop(String) customClass?: string;
+    @Prop(String) customClass?: string; // 自定义class
 
-    @Prop({ type: [String, Number], default: 8 }) minLength!: string | number;
+    @Prop({ type: [String, Number], default: 8 }) minLength!: string | number; // 密码最小长度，默认8位
 
     @Prop({
         type: String,
@@ -37,23 +48,30 @@ export default class Password extends Vue {
         validator: (val: string) => {
             return ['progress', 'text'].includes(val);
         }
-    }) type!: string;
+    }) type!: string; // 展示模式，进度、文字
 
-    private currentStrength: Base.IdName = {
-        id: 0,
-        name: ''
-    };
+    @Prop({
+        type: Array,
+        default: () => ['Weak', 'Medium', 'Strong']
+    }) strengtIntro!: string[]; // 自定义密码强度显示
 
-    private strengthArr: Base.IdName[] = [
-        { id: 1, name: 'tm.weak' },
-        { id: 2, name: 'tm.medium' },
-        { id: 3, name: 'tm.strong' }
-    ];
+    @Prop({ type: String, default: 'Password strength' }) strengtLabel!: string; // 文字展示时，自定义密码强度label
+
+    @Prop({ type: Boolean, default: false }) isCapsLock!: boolean; // 是否自动开启键盘大写提示
+
+    @Prop({ type: String, default: 'CapsLock' }) capsLockLabel?: string; // 自动开启键盘大写文字提示
+
+    private currentStrength = 0;
+
+    private strengthArr = [1, 2, 3];
+
+    private openCapsLock = false;
 
     private calculateStrength() {
         let strength: number = 0;
         const minLength = parseInt((this.minLength).toString(), 10);
         if (this.value.length < minLength) {
+            this.currentStrength = 0;
             return -1;
         }
 
@@ -73,16 +91,39 @@ export default class Password extends Vue {
             strength += 1;
         }
         if (strength < 3) {
-            this.currentStrength = this.strengthArr.find((x: any) => x.id === strength) as Base.IdName;
+            this.currentStrength = this.strengthArr.find((x: any) => x === strength) || 0;
         } else {
-            this.currentStrength = this.strengthArr.find((x: any) => x.id === 3) as Base.IdName;
+            this.currentStrength = this.strengthArr.find((x: any) => x === 3) || 3;
         }
+    }
 
+    private checkCapsLock(e: KeyboardEvent) {
+        const upperReg = /^[A-Z]+$/;
+        const capsLockKey = e.keyCode ? e.keyCode : e.which;
+        console.log(e);
+        const shifKey = e.shiftKey ? e.shiftKey : ((capsLockKey == 16) ? true : false); // shift键是否按住
+        if (upperReg.test(e.key) && !shifKey || (!this.openCapsLock && shifKey && capsLockKey === 20)) {
+            this.openCapsLock = true;
+            this.$emit('on-caps-lock', true);
+        } else if (!upperReg.test(e.key) && !shifKey || (this.openCapsLock && shifKey && capsLockKey === 20)) {
+            this.openCapsLock = false;
+            this.$emit('on-caps-lock', false);
+        }
+    }
+
+    mounted() {
+        this.currentStrength = 0;
+        this.calculateStrength();
+        window.addEventListener('keydown', this.checkCapsLock, false);
     }
 
     @Watch('value')
     changeVal() {
         this.calculateStrength();
+    }
+
+    beforeDestroy() {
+        window.removeEventListener('keydown', this.checkCapsLock, false);
     }
 }
 </script>
@@ -101,5 +142,8 @@ export default class Password extends Vue {
 }
 .tm-mr8 {
     margin-right: 8px;
+}
+.tm-ml8 {
+    margin-left: 8px;
 }
 </style>
