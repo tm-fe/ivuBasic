@@ -9,7 +9,8 @@ process.env.NODE_ENV = 'production';
 module.exports = merge(webpackBaseConfig, {
     entry: {
         main: './src/index.ts',
-        emoji: './src/plugins/emoji.ts'
+        emoji: './src/plugins/emoji.ts',
+        base: './src/base.ts'
     },
     output: {
         path: path.resolve(__dirname, '../dist'),
