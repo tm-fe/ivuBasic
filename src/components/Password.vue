@@ -100,7 +100,6 @@ export default class Password extends Vue {
     private checkCapsLock(e: KeyboardEvent) {
         const upperReg = /^[A-Z]+$/;
         const capsLockKey = e.keyCode ? e.keyCode : e.which;
-        console.log(e);
         const shifKey = e.shiftKey ? e.shiftKey : ((capsLockKey == 16) ? true : false); // shift键是否按住
         if (upperReg.test(e.key) && !shifKey || (!this.openCapsLock && shifKey && capsLockKey === 20)) {
             this.openCapsLock = true;
