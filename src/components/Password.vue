@@ -14,8 +14,8 @@
         <div v-if="currentStrength">
             <div v-if="type === 'text'"
                  class="tm-align-l tm-mt tm-flex-start">
-                <span class="tm-mr8">{{strengtLabel}}</span>
-                <Tag :color="currentStrength=== 1 ? 'default':currentStrength === 2?'primary':'success'">{{strengtIntro[currentStrength - 1]}} </Tag>
+                <span class="tm-mr8">{{strengthLabel}}</span>
+                <Tag :color="currentStrength=== 1 ? 'default':currentStrength === 2?'primary':'success'">{{strengthIntro[currentStrength - 1]}} </Tag>
             </div>
             <div v-else
                  class="tm-flex-center">
@@ -24,7 +24,7 @@
                              shape="circle">
                     <Button :type="currentStrength < item ? 'default':item === 1 ? 'info': item === 2?'primary':'success'"
                             v-for="item in strengthArr"
-                            :key="item">{{strengtIntro[item - 1]}}</Button>
+                            :key="item">{{strengthIntro[item - 1]}}</Button>
                 </ButtonGroup>
             </div>
         </div>
