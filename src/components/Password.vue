@@ -53,9 +53,9 @@ export default class Password extends Vue {
     @Prop({
         type: Array,
         default: () => ['Weak', 'Medium', 'Strong']
-    }) strengtIntro!: string[]; // 自定义密码强度显示
+    }) strengthIntro!: string[]; // 自定义密码强度显示
 
-    @Prop({ type: String, default: 'Password strength' }) strengtLabel!: string; // 文字展示时，自定义密码强度label
+    @Prop({ type: String, default: 'Password strength' }) strengthLabel!: string; // 文字展示时，自定义密码强度label
 
     @Prop({ type: Boolean, default: false }) isCapsLock!: boolean; // 是否自动开启键盘大写提示
 

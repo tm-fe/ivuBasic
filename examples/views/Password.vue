@@ -22,7 +22,7 @@
             </FormItem>
             <FormItem label="自定义强度名称">
                 <Password v-model="value2"
-                          :strengtIntro="['简单了点', '还行', '很安全']">
+                          :strengthIntro="['简单了点', '还行', '很安全']">
                     <Input v-model="value2"
                            password
                            type="password"
@@ -32,7 +32,7 @@
             <FormItem label="Text密码模式密码强度名称">
                 <Password v-model="value3"
                           strengtLabel="您设置的密码安全系数"
-                          :strengtIntro="['一颗星', '三颗星', '五颗星']"
+                          :strengthIntro="['一颗星', '三颗星', '五颗星']"
                           type="text">
                     <Input v-model="value3"
                            password
@@ -42,7 +42,7 @@
             </FormItem>
             <FormItem label="开启大写提示">
                 <Password v-model="value4"
-                          :strengtIntro="['一颗星', '三颗星', '五颗星']"
+                          :strengthIntro="['一颗星', '三颗星', '五颗星']"
                           isCapsLock>
                     <Input v-model="value4"
                            password
