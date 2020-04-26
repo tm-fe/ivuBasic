@@ -8,12 +8,14 @@ process.env.NODE_ENV = 'production';
 
 module.exports = merge(webpackBaseConfig, {
     entry: {
-        main: './src/index.ts'
+        main: './src/index.ts',
+        emoji: './src/plugins/emoji.ts',
+        base: './src/base.ts'
     },
     output: {
         path: path.resolve(__dirname, '../dist'),
         publicPath: '/dist/',
-        filename: 'ivubasic.umd.js',
+        filename: '[name].js',
         library: 'ivubasic',
         libraryTarget: 'umd',
         umdNamedDefine: true

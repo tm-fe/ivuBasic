@@ -2,6 +2,7 @@ import Vue from 'vue';
 
 export { Group } from './group';
 export { Emoji } from './emoji';
+export { Password } from './password';
 export { Loading, vLoading } from './loading';
 export { vClipboard } from './clipboard';
 
