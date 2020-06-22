@@ -21,9 +21,10 @@
                  class="tm-flex-center">
                 <ButtonGroup size="small"
                              class="tm-progress"
+                             :class="`strength${currentStrength}`"
                              shape="circle">
-                    <Button :type="currentStrength < item ? 'default':item === 1 ? 'info': item === 2?'primary':'success'"
-                            v-for="item in strengthArr"
+                    <Button v-for="item in strengthArr"
+                            :type="getBtnType(item)"
                             :key="item">{{strengthIntro[item - 1]}}</Button>
                 </ButtonGroup>
             </div>
@@ -67,8 +68,30 @@ export default class Password extends Vue {
 
     private openCapsLock = false;
 
+    /**
+     * 匹配到规则
+     */
+    private matchRule = {
+        number: false,
+        letter: false,
+        symbol: false
+    };
+
+    @Watch('value')
+    changeVal() {
+        this.calculateStrength();
+    }
+
+    @Watch('matchRule')
+    private onMatchRuleChange() {
+        this.$emit('on-change', this.matchRule);
+    }
+
     private calculateStrength() {
         let strength: number = 0;
+        let matchNumber: boolean = false;
+        let matchSymbol: boolean = false;
+        let matchLetter: boolean = false;
         const minLength = parseInt((this.minLength).toString(), 10);
         if (this.value.length < minLength) {
             this.currentStrength = 0;
@@ -77,24 +100,51 @@ export default class Password extends Vue {
 
         if (this.value.match(/[0-9]/)) { // 匹配数字
             strength += 1;
+            matchNumber = true;
         }
 
         if (this.value.match(/[.,!,@,#,$,%,^,&,*,?,_,~]/)) { // 匹配特殊符号
             strength += 1;
+            matchSymbol = true;
         }
 
         if (this.value.match(/[a-z]/)) { // 匹配小写字母
             strength += 1;
+            matchLetter = true;
         }
 
         if (this.value.match(/[A-Z]/)) { // 匹配大写字母
             strength += 1;
+            matchLetter = true;
         }
         if (strength < 3) {
             this.currentStrength = this.strengthArr.find((x: any) => x === strength) || 0;
         } else {
             this.currentStrength = this.strengthArr.find((x: any) => x === 3) || 3;
         }
+
+        this.matchRule = {
+            number: matchNumber,
+            letter: matchLetter,
+            symbol: matchSymbol
+        };
+    }
+
+    private getBtnType(item: number) {
+        const currentStrength = this.currentStrength;
+        if (currentStrength < item) { 
+            return 'default';
+        }
+
+        if (item === 1) {
+            return 'info';
+        }
+
+        if (item === 2) {
+            return 'primary';
+        }
+
+        return 'success';
     }
 
     private checkCapsLock(e: KeyboardEvent) {
@@ -114,11 +164,6 @@ export default class Password extends Vue {
         this.currentStrength = 0;
         this.calculateStrength();
         window.addEventListener('keydown', this.checkCapsLock, false);
-    }
-
-    @Watch('value')
-    changeVal() {
-        this.calculateStrength();
     }
 
     beforeDestroy() {
