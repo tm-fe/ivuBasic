@@ -9,54 +9,52 @@ process.env.NODE_ENV = 'production';
 module.exports = merge(webpackBaseConfig, {
     entry: {
         main: './src/index.ts',
-        emoji: './src/plugins/emoji.ts',
-        base: './src/base.ts'
     },
     output: {
         path: path.resolve(__dirname, '../dist'),
         publicPath: '/dist/',
-        filename: '[name].js',
+        filename: 'ivubasic.umd.js',
         library: 'ivubasic',
         libraryTarget: 'umd',
-        umdNamedDefine: true
+        umdNamedDefine: true,
     },
     externals: {
-        vue: {
+        'vue': {
             root: 'Vue',
             commonjs: 'vue',
             commonjs2: 'vue',
-            amd: 'vue'
+            amd: 'vue',
         },
-        lodash: {
+        'lodash': {
             root: '_',
             commonjs: 'lodash',
             commonjs2: 'lodash',
-            amd: 'lodash'
+            amd: 'lodash',
         },
         'node-emoji': {
             root: 'node-emoji',
             commonjs: 'node-emoji',
             commonjs2: 'node-emoji',
-            amd: 'node-emoji'
+            amd: 'node-emoji',
         },
         'tm-iview': {
             root: 'tm-iview',
             commonjs: 'tm-iview',
             commonjs2: 'tm-iview',
-            amd: 'tm-iview'
-        }
+            amd: 'tm-iview',
+        },
     },
     plugins: [
         new webpack.DefinePlugin({
             'process.env': {
-                NODE_ENV: '"production"'
-            }
+                NODE_ENV: '"production"',
+            },
         }),
         new UglifyJsPlugin({
             parallel: true,
-            sourceMap: false
-        })
+            sourceMap: false,
+        }),
     ],
     optimization: {},
-    mode: 'production'
+    mode: 'production',
 });

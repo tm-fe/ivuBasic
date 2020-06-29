@@ -1,4 +1,3 @@
-import Emoji from './components//Emoji.vue';
 import Group from './components/Group.vue';
 import Loading from './components/loading/Loading.vue';
 import vLoading from './components/loading/directive';
@@ -7,7 +6,6 @@ import Password from './components/Password.vue';
 import './style/index.less';
 
 const components: any = {
-    Emoji,
     Group,
     Loading,
     Password
@@ -34,7 +32,6 @@ const API = {
 export default API;
 export {
     install,
-    Emoji,
     Group,
     Loading,
     vLoading,

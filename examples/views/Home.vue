@@ -8,14 +8,13 @@
 </template>
 
 <script>
-import Emoji from "@/plugins/emoji";
+import Emoji from "@/emoji";
 
 const emojiByName = require("node-emoji/lib/emoji.json");
 export default {
     components: {
         Emoji
     },
-    name: "home",
     data() {
         return {
             text: "",
