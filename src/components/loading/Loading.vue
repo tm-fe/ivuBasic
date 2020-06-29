@@ -27,7 +27,7 @@ export default class Loading extends Vue {
 
     mounted() {
         if (this.$el && this.$el.parentNode) { // 排除指令模式loading
-            this.originalPosition = window.getComputedStyle((this.$el.parentNode as any), '')['position'];
+            this.originalPosition = window.getComputedStyle((this.$el.parentNode as any), '')['position'] as string;
             (this.$el.parentNode as any).style.position = 'relative';
         }
     }
